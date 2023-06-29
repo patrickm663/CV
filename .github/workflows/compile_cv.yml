@@ -19,17 +19,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Build
+      - name: Build p1
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
           latexmk_use_xelatex: true
-      - name: Release: Upload PDF
+      - name: Build p2
         uses: actions/upload-artifact@v3
         with:
           name: PDF
           path: main.pdf
-      - name: Release: Create Artifact
+      - name: Release
         uses: softproprs/action-gh-release@v1
         if: startersWith(github.ref, 'ref/tags/')
         with:

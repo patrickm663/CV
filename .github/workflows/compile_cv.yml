@@ -25,8 +25,7 @@ jobs:
           working_directory: ./src
           root_file: main.tex
           latexmk_use_xelatex: true
-          continue_on_error: true
-          extra_packages: biber
+          latex_compiler_arguments: "-no-pdf -file-line-error -f -interaction=nonstopmode -recorder"
       - name: Build p2
         uses: actions/upload-artifact@v3
         with:

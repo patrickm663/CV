@@ -30,7 +30,7 @@ jobs:
           name: PDF
           path: main.pdf
       - name: Release
-        uses: softproprs/action-gh-release@v1
+        uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'ref/tags/')
         with:
           files: main.PDF

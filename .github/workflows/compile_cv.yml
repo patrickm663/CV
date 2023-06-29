@@ -13,18 +13,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src
     steps:
-      - name: Setup Git repo
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Swtich to src/
-        run: cd src/
-      - name: Compile LaTeX
+      - name: Build
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
           latexmk_use_xelatex: true
-      - name: Upload PDF
+      - name: Release: Upload PDF
         uses: actions/upload-artifact@v3
         with:
           name: PDF
           path: main.pdf
+      - name: Release: Create Artifact
+        uses: softproprs/action-gh-release@v1
+        if: startersWith(github.ref, 'ref/tags/')
+        with:
+          files: main.PDF

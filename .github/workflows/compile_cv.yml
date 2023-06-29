@@ -22,15 +22,18 @@ jobs:
       - name: Build p1
         uses: xu-cheng/latex-action@v2
         with:
+          working-directory: ./src
           root_file: main.tex
           latexmk_use_xelatex: true
       - name: Build p2
         uses: actions/upload-artifact@v3
         with:
+          working-directory: ./src
           name: PDF
           path: main.pdf
       - name: Release p1
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'ref/tags/')
         with:
+          working-directory: ./src
           files: main.PDF

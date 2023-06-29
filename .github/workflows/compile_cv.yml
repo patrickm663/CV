@@ -25,6 +25,8 @@ jobs:
           working_directory: ./src
           root_file: main.tex
           latexmk_use_xelatex: true
+          continue_on_error: true
+          extra_packages: biber
       - name: Build p2
         uses: actions/upload-artifact@v3
         with:
@@ -37,8 +39,10 @@ jobs:
         with:
           working-directory: ./src
           files: main.PDF
-            # - name: Release p2
-            #uses: shallwefootball/s3-upload-action@master
-            # with:
-            #aws_key_id: ${{ secrets.AWS_KEY_ID }}
-            #aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #- name: Release p2
+        #uses: shallwefootball/s3-upload-action@master
+        #with:
+          #aws_key_id: ${{ secrets.AWS_KEY_ID }}
+          #aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          #aws_bucket: ${{ secrets.AWS_BUCKET }}
+          #source_dir: 'src/'

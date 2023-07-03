@@ -11,11 +11,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./iac
     env:
       GITHUB_TOKEN: ${{ github.token }} 
     permissions:
       contents: read
-    working-directory: ./iac
 
     steps:
       - name: Setup Actions

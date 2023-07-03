@@ -28,8 +28,7 @@ jobs:
         with:
           working_directory: ./src
           root_file: pmoehrke.tex
-          latexmk_use_xelatex: true
-          latex_compiler_arguments: "-no-pdf -file-line-error -f -interaction=nonstopmode -recorder"
+        run: pmoehrke.pdf ../output/
       - name: Git commit static site artifacts
         if: github.event_name == 'push'
         run: |

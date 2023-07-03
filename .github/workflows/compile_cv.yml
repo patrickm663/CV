@@ -27,7 +27,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           working_directory: ./src
-          root_file: main.tex
+          root_file: pmoehrke.tex
           latexmk_use_xelatex: true
           latex_compiler_arguments: "-no-pdf -file-line-error -f -interaction=nonstopmode -recorder"
       - name: Git commit static site artifacts

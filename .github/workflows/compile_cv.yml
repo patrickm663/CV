@@ -40,11 +40,11 @@ jobs:
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push
 
-     # - name: Release p2
-     #   uses: shallwefootball/s3-upload-action@master
-     #   with:
-     #     aws_key_id: ${{ secrets.AWS_KEY_ID }}
-     #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-     #     aws_bucket: 'patrick-moehrke-cv'
-     #     source_dir: '/'
-     #     working-directory: ./src
+      - name: Push to S3
+        uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket: "patrick-moehrke-cv-pdf"
+          source_dir: "/"
+          working-directory: ./output

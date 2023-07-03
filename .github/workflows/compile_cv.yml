@@ -16,6 +16,10 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CI_COMMIT_MESSAGE: CICD GitHub Actions build
+      CI_COMMIT_AUTHOR: Continuous Integration
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -26,23 +30,19 @@ jobs:
           root_file: main.tex
           latexmk_use_xelatex: true
           latex_compiler_arguments: "-no-pdf -file-line-error -f -interaction=nonstopmode -recorder"
-      - name: Build p2
-        uses: actions/upload-artifact@v3
-        with:
-          working-directory: ./src
-          name: PDF
-          path: main.pdf
-      - name: Release p1
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'ref/tags/')
-        with:
-          working-directory: ./src
-          files: main.PDF
-      - name: Release p2
-        uses: shallwefootball/s3-upload-action@master
-        with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_bucket: 'patrick-moehrke-cv'
-          source_dir: '/'
-          working-directory: ./src
+      - name: Git commit static site artifacts
+        if: github.event_name == 'push'
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "patrickm663@users.noreply.github.com"
+          git add .
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
+     # - name: Release p2
+     #   uses: shallwefootball/s3-upload-action@master
+     #   with:
+     #     aws_key_id: ${{ secrets.AWS_KEY_ID }}
+     #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+     #     aws_bucket: 'patrick-moehrke-cv'
+     #     source_dir: '/'
+     #     working-directory: ./src

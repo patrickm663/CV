@@ -1,3 +1,3 @@
 # CV
-A repo to hold my CV's TeX files.
+A repo to hold my CV's `.TeX` files.
 

@@ -27,7 +27,7 @@ jobs:
           root_file: pmoehrke.tex
 
       - name: Move PDF to output/
-        run: mv pmoehrke.pdf ../output/
+        run: mv src/pmoehrke.pdf output/
 
       - name: Git commit static site artifacts
         if: github.event_name == 'push'

@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ github.token }} 
-    env:
       CI_COMMIT_MESSAGE: CICD GitHub Actions build
       CI_COMMIT_AUTHOR: Continuous Integration
 

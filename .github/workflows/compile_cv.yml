@@ -11,8 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    with:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
     env:
       GITHUB_TOKEN: ${{ github.token }} 
       CI_COMMIT_MESSAGE: CICD GitHub Actions build
@@ -48,5 +46,4 @@ jobs:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_bucket: "patrick-moehrke-cv-pdf"
-          source_dir: "/"
-          working-directory: ./output
+          source_dir: output/

@@ -7,7 +7,6 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch:
 
 jobs:
   build:
@@ -15,8 +14,11 @@ jobs:
     with:
       github_token: ${{ secrets.GITHUB_TOKEN }}
     env:
+      GITHUB_TOKEN: ${{ github.token }} 
       CI_COMMIT_MESSAGE: CICD GitHub Actions build
       CI_COMMIT_AUTHOR: Continuous Integration
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -40,11 +42,11 @@ jobs:
           git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
           git push
 
-     # - name: Release p2
-     #   uses: shallwefootball/s3-upload-action@master
-     #   with:
-     #     aws_key_id: ${{ secrets.AWS_KEY_ID }}
-     #     aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-     #     aws_bucket: 'patrick-moehrke-cv'
-     #     source_dir: '/'
-     #     working-directory: ./src
+      - name: Push to S3
+        uses: shallwefootball/s3-upload-action@master
+        with:
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket: "patrick-moehrke-cv-pdf"
+          source_dir: "/"
+          working-directory: ./output

@@ -1,0 +1,52 @@
+# CICD to ensure the S3 infrastructure is built correctly
+
+name: S3
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./iac
+    env:
+      GITHUB_TOKEN: ${{ github.token }} 
+    permissions:
+      contents: read
+
+    steps:
+      - name: Setup Actions
+        uses: actions/checkout@v3
+
+      - name: Setup AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform CLI
+        uses: hashicorp/setup-terraform@v2.0.2
+
+      - name: Format
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Initialise
+        run: terraform init
+
+      - name: Validate
+        run: terraform validate -no-color
+        continue-on-error: true
+
+      - name: Plan
+        run: terraform validate -no-color
+        continue-on-error: true
+
+      - name: Apply
+        run: echo "Npt today" #terraform apply -auto-approve

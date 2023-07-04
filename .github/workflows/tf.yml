@@ -49,4 +49,4 @@ jobs:
         continue-on-error: true
 
       - name: Apply
-        run: terraform apply -auto-approve
+        run: echo "Npt today" #terraform apply -auto-approve

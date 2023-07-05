@@ -11,7 +11,8 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
     block_public_policy	= false
 }
 
+// Allpw public access
 resource "aws_s3_bucket_acl" "bucket_acl" {
-  bucket = aws_s3_bucket.My_bucket.id
+  bucket = aws_s3_bucket.bucket.id
   acl    = "public-read"
 }

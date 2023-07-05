@@ -35,6 +35,9 @@ jobs:
       - name: Setup Terraform CLI
         uses: hashicorp/setup-terraform@v2.0.2
 
+      - name: Get Terraform State
+        run: aws cp ${{ secrets.TF_STATE }} . --recursive
+
       - name: Format
         run: terraform fmt -check
         continue-on-error: true

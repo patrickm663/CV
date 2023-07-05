@@ -16,8 +16,10 @@ jobs:
         working-directory: ./iac
     env:
       GITHUB_TOKEN: ${{ github.token }} 
+      CI_COMMIT_MESSAGE: CICD GitHub Actions build
+      CI_COMMIT_AUTHOR: Continuous Integration
     permissions:
-      contents: read
+      contents: write
 
     steps:
       - name: Setup Actions
@@ -50,3 +52,12 @@ jobs:
 
       - name: Apply
         run: terraform apply -auto-approve
+
+      - name: Commit and Push back to GitHub
+        if: github.event_name == 'push'
+        run: |
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "patrickm663@users.noreply.github.com"
+          git add .
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push

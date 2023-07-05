@@ -12,11 +12,23 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
     restrict_public_buckets 	= false
 }
 
-resource "aws_s3_bucket_policy" "bucket_policy" {
-  bucket = aws_s3_bucket.bucket.bucket
+resource "aws_s3_bucket_acl" "bucket" {
+    bucket 	= aws_s3_bucket.prod_media.id
+    acl    	= "public-read"
+    depends_on 	= [aws_s3_bucket_ownership_controls.s3_bucket_acl_ownership]
+}
 
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression's result to valid JSON syntax.
+resource "aws_s3_bucket_ownership_controls" "s3_bucket_acl_ownership" {
+  bucket = aws_s3_bucket.bucket.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+  depends_on = [aws_s3_bucket_public_access_block.bucket]
+}
+
+resource "aws_s3_bucket_policy" "bucket_policy" {
+  bucket = aws_s3_bucket.bucket.id
+
   policy = jsonencode({
     Version = "2012-10-17"
     Id      = "CVBUCKETPOLICY"
@@ -34,4 +46,6 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
       },
     ]
   })
+
+  depends_on = [aws_s3_bucket_public_access_block.bucket]
 }

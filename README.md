@@ -1,5 +1,6 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-![Build Static Site](https://github.com/patrickm663/CV/actions/workflows/build-website.yml/badge.svg)
+![IaC](https://github.com/patrickm663/CV/actions/workflows/tf.yml/badge.svg)
+![Compile LaTeX & Deploy PDF to S3](https://github.com/patrickm663/CV/actions/workflows/compile_cv.yml/badge.svg)
 # CV
 A repo to hold my CV's `.TeX` files.
 

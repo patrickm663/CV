@@ -56,13 +56,6 @@ jobs:
       - name: Apply
         run: terraform apply -auto-approve
 
-      - name: Commit and Push back to GitHub
-        if: github.event_name == 'push'
+      - name: Copy State back to S3
         run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "patrickm663@users.noreply.github.com"
-          git pull
-          git add .
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}" || echo "No modifications"
-          git push
-          aws s3 sync terraform.tfstate ${{ secrets.TF_STATE }} 
+          aws s3 cp terraform.tfstate ${{ secrets.TF_STATE }} 

@@ -13,7 +13,7 @@ resource "aws_s3_bucket_public_access_block" "bucket" {
 }
 
 resource "aws_s3_bucket_acl" "bucket" {
-    bucket 	= aws_s3_bucket.prod_media.id
+    bucket 	= aws_s3_bucket.bucket.id
     acl    	= "public-read"
     depends_on 	= [aws_s3_bucket_ownership_controls.s3_bucket_acl_ownership]
 }

@@ -1,6 +1,7 @@
 // S3 bucket for CV
 resource "aws_s3_bucket" "bucket" {
     bucket = "patrick-moehrke-cv-pdf"
+    acl = ""
 }
 
 // Allow public access

@@ -299,15 +299,18 @@
   \textcolor{accent}{\href{#2}{#1}}
 }
 
-\newcommand{\cvachievement}[3]{%
-  \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
-  \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
-  & #3
-  \end{tabularx}%
-  \smallskip
+\newcommand{\cvachievement}[2]{%
+  %\begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
+  %\multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
+  {\large\color{emphasis}#1}
+  \par\medskip\normalsize
+  \ifstrequal{#2}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faCalendar\color{emphasis}~#2}}}
+  
+  %\end{tabularx}%
+  \medskip\normalsize
 }
 
-% Fork (before v1.6.5a): Tags now have a more consistent vertican and horizontal separation
+% Fork (before v1.6.5a): Tags now have a more consistent vertical and horizontal separation
 \newcommand{\cvtag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=body,rounded corners,inner xsep=1ex,inner ysep=0.75ex,text height=1.5ex,text depth=.25ex]{#1};
   \vspace{0.25ex}

@@ -35,7 +35,7 @@
 %% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
 
 % Change the page layout if you need to
-\geometry{left=1.2cm,right=1.2cm,top=1cm,bottom=1cm,columnsep=0.75cm}
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm,columnsep=0.75cm}
 
 % The paracol package lets you typeset columns of text in parallel
 \usepackage{paracol}
@@ -69,7 +69,7 @@
   \definecolor{ThirdColor}{HTML}{F3890B}
   \definecolor{BodyColor}{HTML}{666666}
   \definecolor{EmphasisColor}{HTML}{2E2E2E}
-  \definecolor{BackgroundColor}{HTML}{E2E2E2}
+  \definecolor{BackgroundColor}{HTML}{FFFFFF}
 \fi%
 
 \colorlet{name}{PrimaryColor}
@@ -93,21 +93,17 @@
 \renewcommand{\itemmarker}{{\small\textbullet}}
 \renewcommand{\ratingmarker}{\faCircle}
 
-%% sample.bib contains your publications
-%% \addbibresource{main.bib}
 
 \begin{document}
     \name{Patrick Moehrke}
     \tagline{Actuarial Consultant | Data Scientist | Cloud Practitioner | TASSA}
-    %% You can add multiple photos on the left or right
-    %%\photoL{4cm}{john-doe}
 
     \personalinfo{
         \email{parickmoehrke46@gmail.com}\smallskip
         \location{Somerset West, Western Cape, ZA}\\
         \linkedin{patrick-m-0509ab3}\smallskip
         \github{patrickm663}\smallskip
-        \homepage{patrickmoehrke.com}\smallskip
+        \homepage{patrickmoehrke.com}
         %\medium{nicolasomar}
         %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
         % \orcid{0000-0000-0000-0000}
@@ -122,10 +118,10 @@
     
     \makecvheader
     %% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-    % \AtBeginEnvironment{itemize}{\small}
+    \AtBeginEnvironment{itemize}{\small}
     
     %% Set the left/right column width ratio to 6:4.
-    \columnratio{0.25}
+    \columnratio{0.28}
 
     % Start a 2-column paracol. Both the left and right columns will automatically
     % break across pages if things get too long.
@@ -153,29 +149,28 @@
             \cvtag{Terraform}
         % ----- TECH STACK -----
         
-        % ----- LEARNING -----
-        \cvsection{MACHINE LEARNING}
-	    \cvsubsection{Algorithms}
-            \cvtag{Sci-kit Learn}
-            \cvtag{SHAP}
-            \cvtag{LIME}
-            \cvtag{Cuatro}
-            \cvtag{Cinco}
-            \cvtag{Seis}
-            \cvtag{Siete}
+        % ----- SKILLS -----
+        \cvsection{Skills}
+            \cvtag{Explainable ML}\\
+            \cvtag{Probabilistic Programming}
+            \cvtag{Containerisation}
+            \cvtag{Fullstack ML}
+            \cvtag{Technical Writing}
+            \cvtag{Public Speaking}
+            \cvtag{Teaching}
             \cvtag{Ocho}
             \cvtag{Nueve}
             \cvtag{Diez}\\
-	    \cvsubsection{Explainability}
             
         % ----- LEARNING -----
 
-        % ----- MOST PROUD -----
-         \cvsection{Certifications}
-	 \cvachievement{AWS Certified Cloud Practitioner CLF-C01}{April 2023}
-	 \cvachievement{Technical Actuarial Member of ASSA (TASSA)}{July 2022}
+	% ----- AWARDS & CERTIFICATIONS -----
+	\cvsection{Awards \& \\ Certifications}
+	  \cvachievement{AWS Certified Cloud Practitioner CLF-C01}{April 2023}
+	  \cvachievement{Technical Actuarial Member of ASSA (TASSA)}{July 2022}
+	  \cvachievement{Member of Golden Key International Honours Society}{September 2019}
 
-        % ----- MOST PROUD -----
+	% ----- AWARDS & CERTIFICATIONS -----
             
         % ----- REFERENCES -----
         \cvsection{References}

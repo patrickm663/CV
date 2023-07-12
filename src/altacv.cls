@@ -269,8 +269,8 @@
 
 % Fork (before v1.6.5a): Two bigskip tags added for better section separation
 \newcommand{\cvsection}[2][]{%
-  \bigskip%  %% bugfix in v1.6.2
-  \bigskip%  %% bugfix in v1.6.2
+  \medskip%  %% bugfix in v1.6.2
+  \medskip%  %% bugfix in v1.6.2
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
   {\color{headingrule}\rule{\linewidth}{2pt}\par}
@@ -291,7 +291,7 @@
   \par\medskip\normalsize
   \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faCalendar\color{emphasis}~#3}}}
   \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faMapMarker\color{emphasis}~#4}}}\par
-  \medskip\normalsize
+  \smallskip\normalsize
 }
 
 % Fork v1.6.5b
@@ -313,7 +313,7 @@
 % Fork (before v1.6.5a): Tags now have a more consistent vertical and horizontal separation
 \newcommand{\cvtag}[1]{%
   \tikz[baseline]\node[anchor=base,draw=body,rounded corners,inner xsep=1ex,inner ysep=0.75ex,text height=1.5ex,text depth=.25ex]{#1};
-  \vspace{0.25ex}
+  \vspace{0.09ex}
 }
 
 % v1.6: Use accsupp so that the actual numeric value is copied/pasted

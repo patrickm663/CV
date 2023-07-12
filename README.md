@@ -6,3 +6,5 @@ A repo to hold my CV's `.TeX` files.
 
 The CV can be retrieved from `output/` or the S3 bucket I CD to https://patrick-moehrke-cv-pdf.s3.amazonaws.com/pmoehrke.pdf
 
+## Acknowledgements
+The CV template mine is based on can be found at: https://github.com/NicolasOmar/AltaCV

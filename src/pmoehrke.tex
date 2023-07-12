@@ -93,6 +93,8 @@
 \renewcommand{\itemmarker}{{\small\textbullet}}
 \renewcommand{\ratingmarker}{\faCircle}
 
+\usepackage{amssymb}
+
 
 \begin{document}
     \name{Patrick Moehrke}
@@ -198,7 +200,7 @@
         \cvsection{Experience}
             \cvevent{Actuarial Consultant}{Actuartech}{July 2020 -- Present}{}
 	    As part of a team of 6, I develop solutions and training material to help clients address their business needs that draws on DevOps tooling, machine learning, and the cloud. Using different programming languages and environments, I:
-            \begin{itemize} %indent slightly
+	    \begin{itemize}[label=$\circ$] %TODO indent slightly
 	      \item Developed, architected, and deployed a serverless data management and dashboarding\\ solution on AWS to report financial results aligned with a new international reporting\\ standard (IFRS 17) at a reduced cost vs off-the-shelf solutions.
 	      \item Identified and documented risks present in the current architecture of a multinational\\ reinsurer's actuarial \& financial reporting solution, and proposed a future implementation state to stakeholders.
 	      \item Developed, tested, and documented a financial reporting solution for a South African life insurer to ensure compliance with a new international reporting standard (IFRS 17).

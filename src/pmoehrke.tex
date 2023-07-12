@@ -64,12 +64,12 @@
   \definecolor{EmphasisColor}{HTML}{ABABAB}
   \definecolor{BackgroundColor}{HTML}{FFFFFF}
 \else%
-  \definecolor{PrimaryColor}{HTML}{001F5A}
-  \definecolor{SecondaryColor}{HTML}{0039AC}
-  \definecolor{ThirdColor}{HTML}{F3890B}
-  \definecolor{BodyColor}{HTML}{666666}
-  \definecolor{EmphasisColor}{HTML}{2E2E2E}
-  \definecolor{BackgroundColor}{HTML}{FFFFFF}
+  \definecolor{PrimaryColor}{HTML}{15317D} % Dark blue
+  \definecolor{SecondaryColor}{HTML}{46588A} % Grey blue
+  \definecolor{ThirdColor}{HTML}{C2980E} % Orange
+  \definecolor{BodyColor}{HTML}{666666} % Lighter grey
+  \definecolor{EmphasisColor}{HTML}{2E2E2E} % Dark grey
+  \definecolor{BackgroundColor}{HTML}{FFFFFF} % White
 \fi%
 
 \colorlet{name}{PrimaryColor}
@@ -121,14 +121,14 @@
     \AtBeginEnvironment{itemize}{\small}
     
     %% Set the left/right column width ratio to 6:4.
-    \columnratio{0.28}
+    \columnratio{0.275}
 
     % Start a 2-column paracol. Both the left and right columns will automatically
     % break across pages if things get too long.
     \begin{paracol}{2}
         % ----- SKILLS -----
         \cvsection{Skills}
-	\cvsubsection{Tech Stack}
+	  \cvsubsection{Tech Stack}
             \cvtag{Python}
             \cvtag{R}
             \cvtag{Julia}
@@ -137,51 +137,46 @@
             \cvtag{D}
             \cvtag{Bash}
             \cvtag{JavaScript}\\
-            %\medskip
             \cvtag{Git}
             \cvtag{Docker}
             \cvtag{Linux}
-            \cvtag{\LaTeX}
+            \cvtag{\LaTeX}\\
             \cvtag{GitHub Actions}
-            \cvtag{GitLab CICD}
             \cvtag{EC2}
-            \cvtag{Lambda}
             \cvtag{S3}
-            \cvtag{AWS Lambda}
+            \cvtag{Lambda}
             \cvtag{Terraform}
         
-	\cvsubsection{Techniques}
-            \cvtag{Explainable ML}\\
-            \cvtag{Probabilistic Programming}
-            \cvtag{Containerisation}
-            \cvtag{MLOps}
+	  \cvsubsection{Techniques}
+            \cvtag{Containerisation}\\
             \cvtag{Serverless Computing}\\
-            \cvtag{High-performance Computing}
-            \cvtag{Version Control}
             \cvtag{Solution Architecture}\\
-            \cvtag{Technical Documentation}\\
+            \cvtag{Technical Documentation}
+            \cvtag{Explainable ML}
+            \cvtag{MLOps}
+            %%\cvtag{Probabilistic Programming}
 
-	\cvsubsection{Professional Skills}
+	  \cvsubsection{Professional Skills}
             \cvtag{Technical Writing}
             \cvtag{Mentoring}
-            \cvtag{Stakeholder Engagement}
+            \cvtag{Stakeholder Engagement}\\
             \cvtag{Innovative}
             \cvtag{Critical Thinking}
             \cvtag{Collaboration}
         % ----- SKILLS -----
 
 	% ----- AWARDS & CERTIFICATIONS -----
-	\cvsection{Awards \& \\ Certifications}
-	  \cvachievement{AWS Certified Cloud Practitioner CLF-C01}{April 2023}
-	  \cvachievement{Technical Actuarial Member of ASSA (TASSA)}{July 2022}
-	  \cvachievement{Member of Golden Key International Honours Society}{September 2019}
+	\cvsection{Awards \& \\ Certifications} %make smaller
+	    \cvevent{AWS Certified Cloud Practitioner}{2023}{}{}
+	    \cvevent{Technical Member of ASSA}{2022}{}{}
+	    \cvevent{Golden Key International Honours Society}{2019}{}{}
 
 	% ----- AWARDS & CERTIFICATIONS -----
             
         % ----- REFERENCES -----
         \cvsection{References}
-            \cvref{Person A}{Institute}{a.beta@university.edu}
-            \cvref{Person B}{Business}{g.delta@business.com}
+	    %\cvref{Person A}{Institute}{a.beta@university.edu}
+	    \cvevent{Available upon request.}{}{}{}
         % ----- REFERENCES -----
         
         
@@ -202,34 +197,35 @@
         
         % ----- EXPERIENCE -----
         \cvsection{Experience}
-            \cvevent{Actuarial Consultant}{Dupro Advisory}{July 2020 -- Present}{Stellenbosch, ZA}
-            \begin{itemize}
-	      \item Deliver training material \& workshops on machine learning and cloud to insurance and financial service providers
-	      \item On a day-to-day basis, I use a range of languages and environemnts as appropriate. 
-              \item Third achievement
+            \cvevent{Actuarial Consultant}{Actuartech}{July 2020 -- Present}{}
+	    As part of a team of 6, I develop solutions and training material to help clients address their business needs that draws on DevOps tooling, machine learning, and the cloud. Using different programming languages and environments, I:
+            \begin{itemize} %indent slightly
+	      \item Developed, architected, and deployed a serverless data management and dashboarding solution on AWS to report financial results aligned with a new international reporting standard (IFRS 17) at a reduced cost vs off-the-shelf solutions.
+	      \item Identified and documented risks present in the current architecture of a multinational reinsurer's actuarial \& financial reporting solution, and proposed a future implementation state to stakeholders.
+	      \item Developed, tested, and documented a financial reporting solution for a South African life insurer to ensure compliance with a new international reporting standard (IFRS 17).
+	      \item Architected, tested, and developed low-cost, full-stack serverless web app to confernence attendees over 3 days, which had over 3 000 API calls with zero failures.
+	      \item Conducted annual mortality experience reports in Python for a South African life insurer using statistical and probabilistic modelling techniques to validate current assumptions and advise on anticipated mortality experience for the company.
             \end{itemize}
         
             \divider
-            \cvevent{Academic Tutor}{Stellenbosch University}{January 2020 -- July 2020}{Stellenbosch, ZA}
-            \begin{itemize}
-	      \item I served as an academic tutor for Actuarial Science 112 students. this included mentoring, explaining complex topics, and grading assignments. 
-            \end{itemize}
+            \cvevent{Academic Tutor}{Stellenbosch University}{January 2020 -- July 2020}{}
+	      I served as an academic tutor for Actuarial Science 112 (financial mathematics). This included mentoring, explaining complex topics, and reviewing assignments. 
             
         % ----- EXPERIENCE -----
         
         % ----- EDUCATION -----
         \cvsection{Education}
-            \cvevent{BCom Honours Actuarial Science}{Stellenbosch University}{Jan 2020 -- Dec 2020}{Stellenbosch, ZA}
-	    Completed coursework and a research project ('Evaluating the use of genetics to calculate risk premiums with applications to Huntington's Disease') whilst leading a campus society. The core competencies included actuarial risk management, financial engineering, and statistical programming.
+            \cvevent{BCom Honours Actuarial Science}{Stellenbosch University}{Jan 2020 -- Dec 2020}{}
+	    Completed coursework and a research project ('Evaluating the use of genetics to calculate risk premiums with applications to Huntington's Disease'). Core competencies included risk management, financial engineering, and statistical programming.
 
             \divider
             
-            \cvevent{BCom Actuarial Science}{Stellenbosch University}{Jan 2017 -- Dec 2019}{Stellenbosch, ZA}
-	    Well-rounded student with demonstrated academic performance and involvement in leading campus societies. Subject areas included actuarial science, statistics, computer science, mathematics, and economics.
+            \cvevent{BCom Actuarial Science}{Stellenbosch University}{Jan 2017 -- Dec 2019}{}
+	    Holistic student with demonstrated academic performance and involvement in campus societies. Subject areas included actuarial science, statistics, computer science, mathematics, and economics.
 
             \divider
 
-            \cvevent{IEB National Senior Certificate}{Beaulieu College}{Jan 2012 -- Dec 2016}{Johannesburg, ZA}
+            \cvevent{IEB National Senior Certificate}{Beaulieu College}{Jan 2012 -- Dec 2016}{}
 	      IEB matric certificate with an A average. Awarded top achiever in 3 subjects.
         % ----- EDUCATION -----
         

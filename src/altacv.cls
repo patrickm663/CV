@@ -105,6 +105,7 @@
 \RequirePackage{dashrule}
 \RequirePackage{multirow,tabularx}
 \RequirePackage{changepage}
+\RequirePackage{vwcol}
 % \RequirePackage{marginfix}
 
 \setlength{\parindent}{0pt}
@@ -186,10 +187,12 @@
 \newcommand{\name}[1]{\def\@name{#1}}
 \newcommand{\tagline}[1]{\def\@tagline{#1}}
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
+\newcommand{\profile}[1]{\def\@profile{#1}}
 \NewInfoField{email}{\faAt}[mailto:]
 \NewInfoField{mailaddress}{\faEnvelope}
 \NewInfoField{phone}{\faPhone}[tel:]
 \NewInfoField{homepage}{\faGlobe}[https://]
+\NewInfoField{worklocation}{\faGlobe}
 \NewInfoField{twitter}{\faTwitter}[https://twitter.com/]
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
 \NewInfoField{github}{\faGithub}[https://github.com/]
@@ -249,28 +252,34 @@
 \newcommand{\personalinfofont}{\footnotesize\bfseries}
 \newcommand{\cvsectionfont}{\LARGE\bfseries}
 \newcommand{\cvsubsectionfont}{\large\bfseries}
+\newcommand{\profilefont}{\footnotesize}
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \altacv@left@photos\hfill%
-    \begin{minipage}{\dimexpr\linewidth}%
-    \raggedright%
-    {\namefont\color{name}\MakeUppercase{\@name}\par}
-    \medskip
-    {\taglinefont\color{tagline}\@tagline\par}
-    \medskip
-    {\personalinfofont\@personalinfo\par}
+    \begin{minipage}{0.6\linewidth}%
+      \raggedright
+      {\namefont\color{name}\MakeUppercase{\@name}\par}
+      \medskip
+      {\taglinefont\color{tagline}\@tagline\par}
+      \medskip
+      {\profilefont\@profile\par}
     \end{minipage}\hfill%
-    \altacv@right@photos\par%
-  \endgroup\medskip
+    \begin{minipage}{0.4378\linewidth}%
+      \bigskip
+      \bigskip
+      \bigskip
+      \raggedleft
+      {\personalinfofont\@personalinfo\par}
+    \end{minipage}\hfill%
+  %\endgroup
+  \medskip
 }
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
 
 % Fork (before v1.6.5a): Two bigskip tags added for better section separation
 \newcommand{\cvsection}[2][]{%
-  \medskip%  %% bugfix in v1.6.2
-  \medskip%  %% bugfix in v1.6.2
+  \bigskip%  %% bugfix in v1.6.2
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
   {\color{headingrule}\rule{\linewidth}{2pt}\par}
@@ -278,7 +287,6 @@
 }
 
 \newcommand{\cvsubsection}[1]{%
-  \smallskip%
   {\color{subheading}\cvsubsectionfont{#1}\par}
   \medskip
 }
@@ -288,7 +296,7 @@
 \newcommand{\cvevent}[4]{%
   {\large\color{emphasis}#1}
   \ifstrequal{#2}{}{}{\large{\color{accent} | #2}}
-  \par\medskip\normalsize
+  \par\smallskip\normalsize
   \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faCalendar\color{emphasis}~#3}}}
   \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faMapMarker\color{emphasis}~#4}}}\par
   \smallskip\normalsize

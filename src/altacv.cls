@@ -250,7 +250,7 @@
 \newcommand{\namefont}{\Huge\bfseries}
 \newcommand{\taglinefont}{\large\bfseries}
 \newcommand{\personalinfofont}{\footnotesize\bfseries}
-\newcommand{\cvsectionfont}{\LARGE\bfseries}
+\newcommand{\cvsectionfont}{\large\bfseries}
 \newcommand{\cvsubsectionfont}{\large\bfseries}
 \newcommand{\profilefont}{\footnotesize}
 
@@ -299,7 +299,7 @@
   \par\smallskip\normalsize
   \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faCalendar\color{emphasis}~#3}}}
   \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faMapMarker\color{emphasis}~#4}}}\par
-  \smallskip\normalsize
+  %\smallskip\normalsize
 }
 
 % Fork v1.6.5b

@@ -249,10 +249,11 @@
 
 \newcommand{\namefont}{\Huge\bfseries}
 \newcommand{\taglinefont}{\large\bfseries}
-\newcommand{\personalinfofont}{\footnotesize\bfseries}
+\newcommand{\personalinfofont}{\normalsize\bfseries}
 \newcommand{\cvsectionfont}{\large\bfseries}
 \newcommand{\cvsubsectionfont}{\large\bfseries}
-\newcommand{\profilefont}{\footnotesize}
+\newcommand{\cvsubsubsectionfont}{\normalsize\bfseries\textit}
+\newcommand{\profilefont}{\normalsize} %\footnotesize}
 
 \newcommand{\makecvheader}{%
   \begingroup
@@ -272,7 +273,7 @@
       {\personalinfofont\@personalinfo\par}
     \end{minipage}\hfill%
   %\endgroup
-  \medskip
+  \smallskip
 }
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
@@ -289,6 +290,11 @@
 \newcommand{\cvsubsection}[1]{%
   {\color{subheading}\cvsubsectionfont{#1}\par}
   \medskip
+}
+
+\newcommand{\cvsubsubsection}[1]{%
+  {\color{subheading}\cvsubsubsectionfont{#1}\par}
+  \smallskip
 }
 
 % v1.1.4: fixes inconsistent font size

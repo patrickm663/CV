@@ -1,360 +1,274 @@
-%%%%%%%%%%%%%%%%%
-% This is an sample CV template created using altacv.cls
-% (v1.3, 10 May 2020) written by LianTze Lim (liantze@gmail.com). Now compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
-% (v1.6.5b, 27 Jun 2023) forked by Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
-%
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
-%%%%%%%%%%%%%%%%
-
-%% If you need to pass whatever options to xcolor
 \PassOptionsToPackage{dvipsnames}{xcolor}
-
-%% If you are using \orcid or academicons
-%% icons, make sure you have the academicons
-%% option here, and compile with XeLaTeX
-%% or LuaLaTeX.
-% \documentclass[10pt,a4paper,academicons]{altacv}
-
-%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
-% \documentclass[10pt,a4paper,normalphoto]{altacv}
-
-%% Fork (before v1.6.5a): CV dark mode toggle enabler to use a inverted color palette.
-%% Use the "darkmode" option if you want a color palette used to 
-% \documentclass[10pt,a4paper,ragged2e,withhyper,darkmode]{altacv}
-
 \documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
-%% AltaCV uses the fontawesome5 and academicons fonts
-%% and packages.
-%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+\geometry{left=1.2cm,right=1.2cm,top=1.1cm,bottom=1.35cm,footskip=18pt}
+\usepackage[defaultsans]{lato}
+\renewcommand{\familydefault}{\sfdefault}
+\AtBeginDocument{\fontsize{11}{14.5}\selectfont}
 
-% Change the page layout if you need to
-\geometry{left=1cm,right=1cm,top=0.75cm,bottom=0.75cm,columnsep=0.75cm}
-
-% The paracol package lets you typeset columns of text in parallel
-\usepackage{paracol}
-
-% Change the font if you want to, depending on whether
-% you're using pdflatex or xelatex/lualatex
-\ifxetexorluatex
-  % If using xelatex or lualatex:
-  \setmainfont{Roboto Slab}
-  \setsansfont{Lato}
-  \renewcommand{\familydefault}{\sfdefault}
-\else
-  % If using pdflatex:
-  \usepackage[rm]{roboto}
-  \usepackage[defaultsans]{lato}
-  % \usepackage{sourcesanspro}
-  \renewcommand{\familydefault}{\sfdefault}
-\fi
-
-% Fork (before v1.6.5a): Change the color codes to test your personal variant on any mode
-\ifdarkmode%
-  \definecolor{PrimaryColor}{HTML}{C69749}
-  \definecolor{SecondaryColor}{HTML}{D49B54}
-  \definecolor{ThirdColor}{HTML}{1877E8}
-  \definecolor{BodyColor}{HTML}{ABABAB}
-  \definecolor{EmphasisColor}{HTML}{ABABAB}
-  \definecolor{BackgroundColor}{HTML}{FFFFFF}
-\else%
-  \definecolor{PrimaryColor}{HTML}{15317D} % Dark blue
-  \definecolor{SecondaryColor}{HTML}{46588A} % Grey blue
-  \definecolor{ThirdColor}{HTML}{C2980E} % Gold
-  \definecolor{BodyColor}{HTML}{666666} % Lighter grey
-  \definecolor{EmphasisColor}{HTML}{2E2E2E} % Dark grey
-  \definecolor{BackgroundColor}{HTML}{FFFFFF} % White
-\fi%
-
+\definecolor{PrimaryColor}{HTML}{0F2552}
+\definecolor{AccentColor}{HTML}{1D4ED8}
+\definecolor{SlateRule}{HTML}{CBD5E1}
+\definecolor{BodyColor}{HTML}{1E293B}
+\definecolor{SidebarFill}{HTML}{EFF4FA}
+\definecolor{SidebarBorder}{HTML}{D9E3F0}
+\definecolor{MutedColor}{HTML}{52647A}
 \colorlet{name}{PrimaryColor}
-\colorlet{tagline}{SecondaryColor}
+\colorlet{tagline}{AccentColor}
 \colorlet{heading}{PrimaryColor}
-\colorlet{headingrule}{ThirdColor}
-\colorlet{subheading}{SecondaryColor}
-\colorlet{accent}{SecondaryColor}
-\colorlet{emphasis}{EmphasisColor}
+\colorlet{headingrule}{SlateRule}
+\colorlet{subheading}{AccentColor}
+\colorlet{accent}{AccentColor}
+\colorlet{emphasis}{PrimaryColor}
 \colorlet{body}{BodyColor}
-\pagecolor{BackgroundColor}
+\pagecolor{white}
 
-% Change some fonts, if necessary
-\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
-\renewcommand{\personalinfofont}{\small\bfseries}
-\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
-\renewcommand{\cvsubsectionfont}{\large\bfseries}
-\renewcommand{\profilefont}{\small}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlength{\RaggedRightRightskip}{0pt plus 1fil}
+\AtBeginDocument{\RaggedRight}
 
-% Change the bullets for itemize and rating marker
-% for \cvskill if you want to
-\renewcommand{\itemmarker}{{\small\textbullet}}
-\renewcommand{\ratingmarker}{\faCircle}
+\AddToHook{shipout/foreground}{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south west,inner sep=0pt,text=MutedColor,font=\footnotesize]
+      at ([xshift=1.2cm,yshift=0.65cm]current page.south west) {Patrick Moehrke};
+    \node[anchor=south east,inner sep=0pt,text=MutedColor,font=\footnotesize]
+      at ([xshift=-1.2cm,yshift=0.65cm]current page.south east) {\thepage\ / 2};
+  \end{tikzpicture}%
+}
 
-\usepackage{amssymb}
+\renewcommand{\cvsection}[1]{%
+  \par\addvspace{0.8em}%
+  {\normalsize\bfseries\color{heading}\MakeUppercase{#1}\par}%
+  \nobreak\vspace{0.2em}%
+  {\color{headingrule}\hrule height 0.6pt}%
+  \nobreak\vspace{0.6em}%
+}
 
+\newcommand{\experiencegroup}[1]{%
+  \par\addvspace{0.8em}%
+  {\normalsize\mdseries\itshape\color{PrimaryColor}#1\par}%
+  \nobreak\vspace{0.4em}%
+}
+
+\newcommand{\skillgroup}[2]{%
+  {\bfseries\color{emphasis}#1\par}%
+  #2\par\addvspace{6pt}%
+}
+
+\newcommand{\sidebarentry}[2]{%
+  {\bfseries\color{emphasis}#1\par}%
+  #2\par\addvspace{8pt}%
+}
+
+\newcommand{\sidebarsection}[1]{%
+  \par\addvspace{11pt}%
+  {\small\bfseries\color{heading}\MakeUppercase{#1}\par}%
+  \nobreak\vspace{1.5pt}%
+  {\color{headingrule}\hrule height 0.6pt}%
+  \nobreak\vspace{7pt}%
+}
+
+\newenvironment{cvsidebar}{%
+  \begin{minipage}[t]{0.30\textwidth}%
+  \vspace{0pt}%
+  \begin{tcolorbox}[colback=SidebarFill,colframe=SidebarBorder,
+    boxrule=0.5pt,arc=2mm,left=9pt,right=9pt,top=8pt,bottom=8pt,
+    before skip=0pt,after skip=0pt]%
+  \RaggedRight\fontsize{10}{13}\selectfont
+}{%
+  \end{tcolorbox}%
+  \end{minipage}\hfill
+}
+
+\newenvironment{cvmain}{%
+  \begin{minipage}[t]{0.675\textwidth}%
+  \vspace{0pt}%
+  \RaggedRight\fontsize{11}{14.5}\selectfont
+}{%
+  \end{minipage}%
+}
+
+\renewcommand{\cvevent}[4]{%
+  {\large\bfseries\color{emphasis}#1\par}%
+  {\small\bfseries\color{accent}#2\par}%
+  \vspace{0.15em}%
+  {\small #3\enspace\textbar\enspace #4\par}%
+  \vspace{0.35em}%
+}
+
+\newlist{cvitems}{itemize}{1}
+\setlist[cvitems]{label=\textcolor{AccentColor}{\textbullet},
+  leftmargin=1.6em,labelsep=0.5em,nosep,
+  itemsep=0.45\baselineskip,after=\vspace{0.25\baselineskip}}
+
+\newcommand{\contactdetails}{%
+  \begin{tabular}{@{}c@{\hspace{0.7em}}l@{}}
+    \textcolor{PrimaryColor}{\faEnvelope} & \href{mailto:patrick@patrickmoehrke.com}{Email: patrick@patrickmoehrke.com}\\
+    \textcolor{PrimaryColor}{\faPhone} & \href{tel:+27799527307}{Cell: +27 79 952 7307}\\
+    \textcolor{PrimaryColor}{\faLinkedin} & \href{https://linkedin.com/in/patrick-moehrke-05b09ab3}{LinkedIn: Patrick Moehrke}\\
+    \textcolor{PrimaryColor}{\faGithub} & \href{https://github.com/patrickm663}{GitHub: patrickm663}\\
+    \textcolor{PrimaryColor}{\faMapMarker} & Location: Cape Town, South Africa
+  \end{tabular}%
+}
+
+\renewcommand{\makecvheader}{%
+  \begingroup
+    \begin{minipage}[t]{0.52\linewidth}
+      \vspace{0pt}%
+      {\fontsize{23}{26}\bfseries\color{name}Patrick Moehrke\par}%
+      \vspace{4pt}%
+      {\large\bfseries\color{tagline}Actuarial Modelling \& Machine Learning\par}%
+      \vspace{3pt}%
+      {\normalsize Associate Actuary (AMASSA)\par}%
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.47\linewidth}
+      \vspace{0pt}%
+      \small\hfill\vphantom{\contactdetails}%
+    \end{minipage}%
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north east,inner sep=0pt,outer sep=0pt]
+        at ([yshift=-0.55cm]current page.north east) {%
+          \begin{tcolorbox}[width=8.2cm,
+            colback=SidebarFill,colframe=SidebarBorder,boxrule=0.5pt,
+            arc=0pt,left=10pt,right=10pt,top=8pt,bottom=8pt,
+            before skip=0pt,after skip=0pt]
+            \small\centering\color{BodyColor}\contactdetails\par
+          \end{tcolorbox}%
+        };
+    \end{tikzpicture}%
+  \endgroup
+  \par\vspace{0.9em}%
+}
 
 \begin{document}
-\name{Patrick Moehrke}
-\tagline{TASSA | Actuarial Consultant}
-
-\personalinfo{
-
-  \email{patrick@patrickmoehrke.com}\\\smallskip
-  \linkedin{patrick-moehrke-05b09ab3}\\\smallskip
-  \github{patrickm663}\\\smallskip
-  \location{Somerset West, Western Cape, ZA}\\\smallskip
-  \worklocation{Open to on-premise, hybrid, and remote work}
-}
-\profile{
-  I am a nearly-qualified aspiring actuary with a strong focus on developing \& contributing to open-source tools for reporting and analytics. I am also a keen software developer with a high aptitude for probabilistic programming, machine learning \& cloud.
-}
-
+\pagestyle{empty}
 \makecvheader
-% ----- PROFILE -----
 
-% ----- PROFILE -----
-%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
-\AtBeginEnvironment{itemize}{\normalsize}
+I develop models in Julia and Python and build the software needed to put them into use. As an Associate Actuary at Momentum Corporate, I bring insurance and investment knowledge, with research experience in deep learning and Bayesian methods.
+\par\vspace{0.8em}
 
-%% Set the left/right column width ratio to 6:4.
-\columnratio{0.29}
+\begin{cvsidebar}
+\sidebarsection{Technical Skills}
+\skillgroup{Languages}{Julia, Python, SQL, R, \LaTeX; \mbox{Zig (\textit{basic})}}
+\skillgroup{ML \& Scientific Computing}{Deep Learning, Probabilistic Programming, Automatic Differentiation, SciML, High Performance Computing}
+\skillgroup{Modelling Libraries}{scikit-learn, XGBoost, SHAP, Lux.jl, Turing.jl, ModelingToolkit.jl}
+\skillgroup{Performance}{Benchmarking, multithreading, allocation profiling}
+\skillgroup{Systems}{Linux, Bash scripting, Containers, QEMU/KVM, Kubernetes (\textit{basic})}
+\skillgroup{Engineering \& CI/CD}{GitLab CI/CD, GitHub Actions, Azure DevOps; unit testing}
+\skillgroup{Cloud}{Terraform, architecture diagrams; AWS Lambda, ECS/Fargate, EC2, S3}
+\skillgroup{AI \& Workflow}{Copilot Studio, Power Query, Power Automate, Jira, SharePoint}
 
-% Start a 2-column paracol. Both the left and right columns will automatically
-% break across pages if things get too long.
-\begin{paracol}{2}
+\sidebarsection{Qualifications}
+\sidebarentry{Associate Actuary (AMASSA)}{%
+  Actuarial Society of South Africa\par
+  13/15 actuarial exams passed\par
+	\emph{Awaiting F204 results}}
+\sidebarentry{AWS Certified Solutions Architect}{Associate}
+\sidebarentry{AWS Certified Cloud Practitioner}{}
+\end{cvsidebar}%
+\begin{cvmain}
+\cvsection{Experience}
+\cvevent{Product Specialist (Smoothed Bonus Funds)}{Momentum Corporate}{May 2024 -- Present}{Cape Town}
+{\small\color{MutedColor}Structured Investments and Annuities\par}
 
-  % ----- SKILLS -----
-  \cvsection{Skills}
-  \cvsubsection{Interpersonal Skills}
-  \cvtag{Life-long learner}
-  \cvtag{Self-starter}
-  \cvtag{Problem solver}
-  \cvtag{Innovator}
-  \cvtag{Critical thinker}
-  \cvtag{Collaborator}
-  \cvtag{Public speaker}
-  \medskip
+\experiencegroup{Model development \& production delivery}
+\begin{cvitems}
+  \item Rebuilt Excel/VBA models in Julia and Python with Git version control, documentation, automated tests and profiling.
+  \item Developed Julia and Python financial model packages, with GitLab CI/CD for linting, tests and container image builds.
+  \item Improved the monthly bonus BAU process by moving Excel workflows to Python and PostgreSQL, with SharePoint for team access. Built Power Query dashboards in Excel for business monitoring.
+  \item Delivered cloud backtesting through SharePoint, with Power Automate triggering model runs from user inputs.
+  \item Reviewed and developed smoothed bonus products for FundsAtWork and stand-alone corporate clients.
+  \item Built a multi-asset ESG for daily backtesting and a CDS spread model using Bayesian jump stochastic differential equations.
+\end{cvitems}
 
-  \cvsubsection{Technical Skills}
-  \cvtag{Bayesian statistics}
-  \cvtag{IFRS 17}
-  \cvtag{Automation}
-  \cvtag{Dashboarding}
-  \cvtag{Cloud computing}
-  \cvtag{Research}
-  \cvtag{Machine learning}
-  \cvtag{XAI}\\
-  \cvtag{Solution architecture}\\
-  \cvtag{Experience analysis}\\
-  \cvtag{Actuarial modelling}\\
-  \medskip
+\experiencegroup{Infrastructure \& performance}
+\begin{cvitems}
+  \item Managed AWS infrastructure with Terraform and documented architecture in diagrams. Deployed Lambda and ECS/Fargate workloads and sized resources to control costs.
+  \item Benchmarked and profiled Julia and Python code, analysing memory allocations before deployment.
+\end{cvitems}
 
-  \cvsubsection{Tech Stack}
-  \cvtag{Julia}
-  \cvtag{Python}
-  \cvtag{R}
-  \cvtag{SQL}\\
-  \cvtag{Bash}
-  \cvtag{Turing.jl}
-  \cvtag{Shapley}\\
-  \cvtag{Docker}
-  \cvtag{Linux}
-  \cvtag{\LaTeX}\\
-  \cvtag{GitHub Actions}
-  \cvtag{AWS}
-  \cvtag{Git}
-  \cvtag{Neovim}
-  \cvtag{VBA}
-  \cvtag{Office 365}
-  \cvtag{Terraform}
-  \cvtag{Streamlit}
-  \cvtag{Shiny}
-  \cvtag{Lua}
-  \cvtag{D}
+\experiencegroup{Governance \& IT collaboration}
+\begin{cvitems}
+  \item Reviewed and tested colleagues' models and code. Prepared reports for internal stakeholders and presented findings to Client ALM and Momentum Corporate PMC.
+  \item Defined requirements in Jira and collaborated with IT stakeholders on Orbit system changes and user acceptance testing for smoothed bonus products.
+\end{cvitems}
 
-  % ----- SKILLS -----
+\experiencegroup{AI \& team development}
+\begin{cvitems}
+  \item Developed bots in Microsoft Copilot Studio and participated in internal AI forums. Introduced GitLab, AWS and CI/CD to the team and trained colleagues in version control, testing and deployment.
+\end{cvitems}
+\end{cvmain}
 
+\newpage
+{\large\bfseries\color{heading}Patrick Moehrke\hfill
+  \small\mdseries\color{MutedColor}Experience and research\par}
+\vspace{0.35em}
+{\color{headingrule}\hrule height 0.6pt}
+\vspace{0.8em}
 
+\begin{cvsidebar}
+\sidebarsection{Education}
+\sidebarentry{MCom Actuarial Science}{%
+  Stellenbosch University\par
+  2024--2026\par
+  Thesis: Bayesian neural networks for mortality modelling.}
+\sidebarentry{BCom (Hons) Actuarial Science}{%
+  Stellenbosch University\par
+  2020\par
+  Research: genetics and risk premiums, applied to Huntington's disease.}
+\sidebarentry{BCom Actuarial Science}{%
+  Stellenbosch University\par
+  2017--2019}
 
-  % ----- ACTUARIAL EDUCATION -----
+\sidebarsection{Awards}
+\sidebarentry{Khuthaza Quarterly Award (4\texttimes)}{Momentum Corporate}
+\sidebarentry{Golden Key International Honour Society}{Stellenbosch University}
+\sidebarentry{Dean's Merit List}{Six subjects, Stellenbosch University}
 
-  \cvsection{Actuarial \\Education}
-  \cvsubsection{ASSA Exam Passes}
-  \cvtag{A111-A214}
-  \cvtag{N111}
-  \cvtag{N211}
-  \cvtag{F104}\\
-  \medskip
+\sidebarsection{GitHub}
+\href{https://github.com/patrickm663}{\textbf{github.com/patrickm663}}\par
+\vspace{8pt}
+\sidebarentry{\href{https://github.com/patrickm663/BNN-sparse-mortality}{BNN-sparse-mortality} / \href{https://github.com/patrickm663/mortality-lstm}{RNNs/LSTMs}}{Hybrid mortality models in Julia}
+\sidebarentry{\href{https://github.com/patrickm663/localglmnet.jl}{LocalGLMnet.jl}}{Neural network interpretability}
+\sidebarentry{\href{https://github.com/patrickm663/zigsal}{zigsal} / \href{https://github.com/patrickm663/hello-sisal}{hello-sisal}}{SISAL revival with Zig; K\&R C compatibility}
+\sidebarentry{\href{https://github.com/patrickm663/HMD.jl}{HMD.jl}}{Mortality data package, tests and documentation}
+\sidebarentry{\href{https://github.com/patrickm663/sisal-benchmarks}{sisal-benchmarks}}{Julia/Python/SISAL benchmarks}
+\sidebarentry{\href{https://github.com/patrickm663/moehrke-co}{moehrke-co}}{Portfolio site and AWS deployment}
+\end{cvsidebar}%
+\begin{cvmain}
+\cvsection{Experience (continued)}
+\cvevent{Actuarial Consultant}{Dupro Advisory (Actuartech)}{July 2020 -- April 2024}{Stellenbosch}
+{\small\textit{Promoted to Actuarial Consultant in December 2021 after trainee and junior roles.}\par}
 
-  % ----- ACTUARIAL EDUCATION -----
+\experiencegroup{Deployment \& reporting}
+\begin{cvitems}
+  \item Designed and deployed serverless IFRS 17 reporting on AWS Lambda at lower cost than off-the-shelf products.
+  \item Built a serverless web application that handled over 3\,000 API calls in three days with zero failures.
+  \item Developed and tested IFRS 17 calculations, helped deliver retrospective opening balances under GMM and VFA, and drafted methodology with external auditors.
+\end{cvitems}
 
+\experiencegroup{Machine learning \& explainability}
+\begin{cvitems}
+  \item Built machine learning proofs of concept using AWS SageMaker and scikit-learn, and researched Bayesian and deep learning methods in Julia for mortality modelling.
+  \item Researched SHAP explainability, fairness and proxy discrimination using driver telematics data.
+\end{cvitems}
 
+\experiencegroup{Architecture \& technical training}
+\begin{cvitems}
+  \item Reviewed a multinational reinsurer's actuarial reporting architecture, documented risks and proposed improvements. Monitored cloud costs and investigated Kubernetes cost reduction on AWS.
+  \item Trained South African and UK actuarial teams in Python, SQL, GitHub Actions, Azure DevOps and serverless AWS. Co-presented at ASSA and IFoA conferences.
+\end{cvitems}
 
-  % ----- AWARDS & CERTIFICATIONS -----
-
-  \cvsection{Certifications} 
-  \begin{itemize}[label=$\circ$, leftmargin=0.33cm, labelsep=0.2cm]\bfseries
-    \item AWS Solutions Architect \\Associate\\
-    \item AWS Certified Cloud \\Practitioner\\
-  \end{itemize}
-  \smallskip
-
-  \newpage
-
-  \cvsection{Awards} 
-  \begin{itemize}[label=$\circ$, leftmargin=0.33cm, labelsep=0.2cm]\bfseries
-    \item Member of Golden Key \\International Honours Society\\
-    \item Stellenbosch University Dean's\\ Merit List for 6 Subjects\\
-    \item Stellenbosch University Merit Bursary
-    \item Maties Gymnastics's \textit{Matie of the Year} 
-  \end{itemize}
-
-  % ----- AWARDS & CERTIFICATIONS -----
-
-
-  % ----- INTERESTS -----
-
-  \cvsection{Interests \&\\Hobbies}
-
-  \cvsubsection{Interests}
-  \cvtag{Cloud native technologies}\\
-  \cvtag{Scientific machine learning}
-  \cvtag{Probabilisitc programming}\\
-  \cvtag{Video game development}\\
-  \cvtag{Linux development}
-  \medskip
-
-  \cvsubsection{Hobbies}
-  \cvtag{Reading}
-  \cvtag{Travelling}\\
-  \cvtag{Gymnastics}
-  \cvtag{Video games}\\
-  \cvtag{Recreational programming}
-  \medskip
-
-  % ----- INTERESTS -----
-
-
-
-  % ----- REFERENCES -----
-
-  \medskip	
-  \cvsection{References}
-  \cvevent{Available upon request.}{}{}{}
-
-  % ----- REFERENCES -----
-
-  %% Switch to the right column. This will now automatically move to the second
-  %% page if the content is too long.
-  \switchcolumn
-
-
-  % ----- EXPERIENCE -----
-
-  \cvsection{Experience}
-  \smallskip
-  \cvevent{Actuarial Consultant}{Actuartech}{January 2022 -- Present}{}
-  \smallskip
-  \cvsubsection{Analytics}
-  \begin{itemize}[label=$\circ$, leftmargin=0.9cm, labelsep=0.43cm]
-    \item Assisted in delivering \& presenting end-to-end mortality experience analyses to management of a South African life insurer.
-    \item Conducted research into various ways open-source packages can improve \\actuarial analytics, including deep learning and Bayesian analysis using Julia.
-    \item Developed and presented training material on actuarial data science to actuarial functions (mainly South African \& UK life insurers). Software included R, Python, SQL, GitHub \& serverless AWS services. 
-    \item As part of a global research team, conducted research on AI risk for actuarial teams. This included fairness modelling, evidencing proxy discrimination \& demonstrating model explainability techniques using driver telematics data. 
-    \item Co-presented on actuarial data science risk management at the ASSA 2022 and IFoA 2022 conferences. 
-  \end{itemize}
-
-  \cvsubsection{Reporting}
-  \begin{itemize}[label=$\circ$, leftmargin=0.9cm, labelsep=0.43cm]
-    \item Assisted in delivering a fully restrospective Opening Balance under IFRS 17's GMM and VFA measurement models for a South African life insurer. 
-    \item Engaged with auditors to provide a first draft of IFRS 17 VFA methodology for a South African subsidary of a UK life insurer. 
-    \item Developed, architected, and deployed a serverless data management \&\\ dashboarding solution on AWS to report financial results aligned to IFRS 17 at a reduced cost vs off-the-shelf solutions.
-    \item Developed, tested, and documented a financial reporting solution for a South African life insurer to ensure compliance with IFRS 17.
-    \item Assisted in developing \& presenting workshops on IFRS 17 to members of the Lloyds of London. 
-    \item Co-presented on IFRS 17 reporting using Python at the ASSA 2023 \\conference. 
-  \end{itemize}
-
-  \cvsubsection{Infrastructure}
-  \begin{itemize}[label=$\circ$, leftmargin=0.9cm, labelsep=0.43cm]
-    \item Identified and documented risks present in the current architecture of a multinational reinsurer's actuarial \& financial reporting solution, and proposed an\\ optimised, future implementation state to stakeholders.
-    \item Architected, tested, and developed a low-cost, full-stack serverless web \\application to conference attendees over 3 days, handling +3 000 API calls with zero failures.
-    \item Gained exposure to monitoring the cloud costs of actuarial systems \& \\investigated solutions to reduce the cost of Kubernetes instances on AWS. 
-  \end{itemize}
-
-  \medskip 
-  \cvevent{Junior Actuarial Consultant}{Actuartech}{July 2020 -- December 2021}{}
-  \smallskip
-  \cvsubsection{Analytics}
-  \begin{itemize}[label=$\circ$, leftmargin=0.9cm, labelsep=0.43cm]
-    \item Assisted in creating \& presenting bespoke R training courses for clients in South African life insurers.
-    \item Under supervision, conducted surveys with actuarial managers to benchmark the use of data science \& analytics across South African \& UK actuarial teams. 
-    \item Co-facilitated webinars \& talks to regional actuarial societies on the topic of actuarial data science. 
-  \end{itemize}
-
-  \cvsubsection{Reporting}
-  \begin{itemize}[label=$\circ$, leftmargin=0.9cm, labelsep=0.43cm]
-    \item Assisted in developing \& presenting workshops on IFRS 17 to regional \\actuarial societies. 
-    \item Assisted in conducting an IFRS 17 readiness \& gap analysis for a South African life insurer. 
-    \item Worked with the client to dashboard indicative IFRS 17 results under GMM \& PAA measurement models. 
-  \end{itemize}
-
-  \cvsubsection{Infrastructure}
-  \begin{itemize}[label=$\circ$, leftmargin=0.9cm, labelsep=0.43cm]
-    \item Assisted in drafting \& presenting training material aimed at actuaries wanting to understand DevOps tooling. This included material on containers, CICD, cloud, infrastructure-as-code \& monitoring tools. 
-    \item Gained exposure to architectural \& maintainance aspects of a Kubernetes-hosted JupyterHub platform. 
-  \end{itemize}
-
-  \medskip 
-
-  \cvevent{Academic Tutor}{Stellenbosch University}{January 2020 -- July 2020}{}
-  \smallskip
-  I served as an academic tutor for Actuarial Science 112 (financial mathematics).\\ This included mentoring, explaining mathematical topics in simple terms \& reviewing assignments. 
-
-  \bigskip 
-  % ----- EXPERIENCE -----
-  
-  %\newpage
-
-  % ----- EDUCATION -----
-  \cvsection{Education}
-  \smallskip
-  \cvevent{BCom Honours Actuarial Science}{Stellenbosch University}{Jan 2020 -- Dec 2020}{}
-  \smallskip
-  \cvsubsubsection{Research Project}
-  Evaluating the use of genetics to calculate risk premiums with applications to \\Huntington's Disease.\\
-
-  Supervisor: Mr Werner Weber, FASSA\\
-  \smallskip
-  \cvsubsubsection{Subjects}
-  Actuarial risk management, financial engineering, extreme value theory, statistical programming in R \& communications.\\
-  \smallskip
-  \cvsubsubsection{Activities}
-  Maties Gymnastics Chairperson \& USSA Gymnastics Vice-chairperson. 
-
-  \medskip
-  \cvevent{BCom Actuarial Science}{Stellenbosch University}{Jan 2017 -- Dec 2019}{}
-  \smallskip
-  \cvsubsubsection{Subjects}
-  Actuarial science, mathematical statistics, computer science, mathematics \& \\economics.\\
-  \smallskip
-  \cvsubsubsection{Activities}
-  Maties Gymnastics Treasurer, USSA Gymnastics Vice-chairperson \& Helderberg Men's Residence Entrance Captain.
-
-  \medskip
-  \cvevent{IEB National Senior Certificate}{Beaulieu College}{Jan 2012 -- Dec 2016}{}
-  \smallskip
-  \cvsubsubsection{Subjects}
-  IEB matric certificate with an A average. Awarded top achiever in Accounting, \\Mathematics \& AP Mathematics.\\
-  \smallskip
-  \cvsubsubsection{Activities}
-  Prefect (Head of House). Rugby, water polo \& chess.
-
-  % ----- EDUCATION -----
-
-
-\end{paracol}
+\cvsection{Research \& Personal Projects}
+\begin{cvitems}
+  \item \textbf{Hybrid mortality models:} combined \href{https://github.com/patrickm663/mortality-lstm}{Lee--Carter, Gompertz and Heligman--Pollard models} with small neural networks; trained Bayesian variants and compared HMC with ADVI.
+  \item \href{https://github.com/patrickm663/localglmnet.jl}{\textbf{Neural network explainability:}} explored gradients, feature effects and symbolic regression using Lux.jl and CUDA.jl.
+  \item \href{https://github.com/patrickm663/zigsal}{\textbf{SISAL revival:}} revived the legacy SISAL toolchain on modern Linux using Zig's C compiler, resolving \href{https://github.com/patrickm663/hello-sisal}{K\&R C compatibility issues} and tuning multithreaded execution for current CPUs.
+  \item \textbf{Personal GPU benchmarks:} benchmarked Lux.jl mortality models using CUDA.jl, recording training time, GPU memory use and validation error.
+  \item \href{https://github.com/patrickm663/sisal-benchmarks}{\textbf{CPU benchmarks:}} compared Julia, NumPy/Numba and SISAL implementations on Linux using BenchmarkTools.jl and hyperfine, exploring multithreading, vectorisation and compiler settings.
+  \item \textbf{Personal Linux \& cloud projects:} ran K3s on Debian VMs using QEMU/KVM and deployed an \href{https://github.com/patrickm663/moehrke-co}{AWS-hosted portfolio} using S3, CloudFront, Route~53 and Lambda.
+\end{cvitems}
+\end{cvmain}
 \end{document}
